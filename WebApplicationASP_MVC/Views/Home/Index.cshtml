@@ -1,0 +1,88 @@
+﻿@*@{
+        ViewData["Title"] = "Home Page";
+    }
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>
+*@
+
+@model IEnumerable<WebApplicationASP_MVC.Models.Game>
+@{
+    //ViewData["Title"] = "Список игр";
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Список игр</title>
+</head>
+<body>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <select name="score" id="selectScore">
+        <option value="all">Любые оценки</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+
+    <select name="genre" id="selectGenre">
+        <option value="all">Все жанры</option>
+        <option value="action">action</option>
+        <option value="add-on">add-on</option>
+        <option value="adventure">adventure</option>
+        <option value="arcade">arcade</option>
+        <option value="cards">cards</option>
+        <option value="casino">casino</option>
+        <option value="casual">casual</option>
+        <option value="educational">educational</option>
+        <option value="fighting">fighting</option>
+        <option value="for adults">for adults</option>
+        <option value="for kids">for kids</option>
+        <option value="logic">logic</option>
+        <option value="massively multiplayer">massively multiplayer</option>
+        <option value="racing">racing</option>
+        <option value="racing">racing</option>
+        <option value="rpg">rpg</option>
+        <option value="simulator">simulator</option>
+        <option value="sport">sport</option>
+        <option value="strategy">strategy</option>
+    </select>
+
+    <br>
+    <input type="button" value="Применить фильтры" onclick="FilterOn()">
+    <input type="button" value="Очистить фильтры" onclick="FilterOff()">
+
+    <h3>Игры</h3>
+    <table id="tableGames">
+        <tr>
+            <td>id</td>
+            <td>Название</td>
+            <td>Оценка</td>
+            <td>Платформы</td>
+            <td>Жанр</td>
+            <td></td>
+        </tr>
+        @foreach (var game in Model)
+        {
+    <tr>
+        <td>@game.Id</td>
+        <td>@game.Name</td>
+        <td>@game.Score</td>
+        <td>@game.Platforms</td>
+        <td>@game.TypeGame</td>
+    </tr>
+        }
+    </table>
+</body>
+</html>
